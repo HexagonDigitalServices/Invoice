@@ -90,7 +90,8 @@ async function tryGenerateWithModel(modelName, prompt) {
   if (!text || !String(text).trim()) {
     throw new Error("Empty text returned from model");
   }
-
+  return { text: String(text).trim(), modelName };
+}
 
 
       let lastErr = null;
@@ -137,6 +138,3 @@ async function tryGenerateWithModel(modelName, prompt) {
         model: usedModel
       });
     }
-  
-  return { text: String(text).trim(), modelName };
-}

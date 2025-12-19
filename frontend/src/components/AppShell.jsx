@@ -198,6 +198,66 @@
                     <path d="M6 18L18 6M6 6l12 12" />
                   </svg>
 
+
+                      <nav className={appShellStyles.mobileNav}>
+                <NavLink
+                  onClick={() => setMobileOpen(false)}
+                  to="/app/dashboard"
+                  className={({ isActive }) =>
+                    `${appShellStyles.mobileNavLink} ${
+                      isActive
+                        ? appShellStyles.mobileNavLinkActive
+                        : appShellStyles.mobileNavLinkInactive
+                    }`
+                  }
+                >
+                  {" "}
+                  <DashboardIcon /> Dashboard
+                </NavLink>
+                <NavLink
+                  onClick={() => setMobileOpen(false)}
+                  to="/app/invoices"
+                  className={({ isActive }) =>
+                    `${appShellStyles.mobileNavLink} ${
+                      isActive
+                        ? appShellStyles.mobileNavLinkActive
+                        : appShellStyles.mobileNavLinkInactive
+                    }`
+                  }
+                >
+                  {" "}
+                  <InvoiceIcon /> Invoices
+                </NavLink>
+                <NavLink
+                  onClick={() => setMobileOpen(false)}
+                  to="/app/create-invoice"
+                  className={({ isActive }) =>
+                    `${appShellStyles.mobileNavLink} ${
+                      isActive
+                        ? appShellStyles.mobileNavLinkActive
+                        : appShellStyles.mobileNavLinkInactive
+                    }`
+                  }
+                >
+                  {" "}
+                  <CreateIcon /> Create Invoice
+                </NavLink>
+                <NavLink
+                  onClick={() => setMobileOpen(false)}
+                  to="/app/business"
+                  className={({ isActive }) =>
+                    `${appShellStyles.mobileNavLink} ${
+                      isActive
+                        ? appShellStyles.mobileNavLinkActive
+                        : appShellStyles.mobileNavLinkInactive
+                    }`
+                  }
+                >
+                  {" "}
+                  <ProfileIcon /> Business Profile
+                </NavLink>
+              </nav>
+
              
                   <svg
                     className={appShellStyles.mobileMenuIcon}

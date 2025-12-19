@@ -10,7 +10,19 @@
   onCtaClick,
 
 
-
+ <ul className={pricingCardStyles.featuresList}>
+        {features.map((feature, index) => (
+          <li key={index} className={pricingCardStyles.featureItem}>
+            <div
+              className={`
+                ${pricingCardStyles.featureIcon}
+                ${
+                  isPopular
+                    ? pricingCardStyles.featureIconPopular
+                    : pricingCardStyles.featureIconRegular
+                }
+              `}
+            >
               <svg
                 className="w-3 h-3"
                 fill="none"
@@ -24,6 +36,67 @@
                   d="M5 13l4 4L19 7"
                 />
               </svg>
+            </div>
+            <span className={pricingCardStyles.featureText}>{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* CTA area: show different button/label depending on auth state */}
+      <div style={{ marginTop: 12 }}>
+        <SignedIn>
+          <button
+            type="button"
+            onClick={() =>
+              onCtaClick && onCtaClick({ title, isPopular, isAnnual })
+            }
+            className={`
+              ${pricingCardStyles.ctaButton}
+              ${
+                isPopular
+                  ? pricingCardStyles.ctaButtonPopular
+                  : pricingCardStyles.ctaButtonRegular
+              }
+            `}
+          >
+            <span
+              className={`
+                ${pricingCardStyles.ctaButtonText}
+                ${
+                  isPopular
+                    ? pricingCardStyles.ctaButtonTextPopular
+                    : pricingCardStyles.ctaButtonTextRegular
+                }
+              `}
+            >
+              {isPopular ? "Get Started" : "Choose Plan"}
+            </span>
+          </button>
+        </SignedIn>
+
+        <SignedOut>
+          <button
+            type="button"
+            onClick={() =>
+              onCtaClick &&
+              onCtaClick(
+                { title, isPopular, isAnnual },
+                { openSignInFallback: true }
+              )
+            }
+            className={`
+              ${pricingCardStyles.ctaButton}
+              ${pricingCardStyles.ctaButtonRegular}
+            `}
+          >
+            <span className={pricingCardStyles.ctaButtonText}>
+              Sign in to get started
+            </span>
+          </button>
+        </SignedOut>
+      </div>
+    </div>
+
 
 
 

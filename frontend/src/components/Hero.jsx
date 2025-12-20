@@ -73,5 +73,23 @@
 
                   ))}
 
-
         —
+
+    <div className={heroStyles.calculationContainer}>
+                  <div className={heroStyles.calculationRow}>
+                    <span className={heroStyles.calculationLabel}>
+                      Subtotal
+                    </span>
+                    <span className={heroStyles.calculationValue}>₹20,500</span>
+                  </div>
+                  <div className={heroStyles.calculationRow}>
+                    <span className={heroStyles.calculationLabel}>
+                      GST (18%)
+                    </span>
+                    <span className={heroStyles.calculationValue}>₹3,240</span>
+                  </div>
+                  <div className={heroStyles.totalRow}>
+                    <span className={heroStyles.totalLabel}>Total Amount</span>
+                    <span className={heroStyles.totalValue}>₹23,740</span>
+                  </div>
+                </div>

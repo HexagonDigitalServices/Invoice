@@ -32,6 +32,17 @@
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const displayName = (() => {
+    if (!user) return "User";
+    const name = user.fullName || user.firstName || user.username || "";
+    return name.trim() || (user.email || "").split?.("@")?.[0] || "User";
+  })();
+
+  const firstName = () => {
+    const parts = displayName.split(" ").filter(Boolean);
+    return parts.length ? parts[0] : displayName;
+  };
+
   const initials = () => {
     const parts = displayName.split(" ").filter(Boolean);
     if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
@@ -39,7 +50,6 @@
       parts[0].charAt(0) + parts[parts.length - 1].charAt(0)
     ).toUpperCase();
   };
-
   /* ----- Icons (kept as you had) ----- */
   const DashboardIcon = ({ className = "w-5 h-5" }) => (
     <svg
@@ -197,6 +207,66 @@
                   >
                     <path d="M6 18L18 6M6 6l12 12" />
                   </svg>
+
+
+                      <nav className={appShellStyles.mobileNav}>
+                <NavLink
+                  onClick={() => setMobileOpen(false)}
+                  to="/app/dashboard"
+                  className={({ isActive }) =>
+                    `${appShellStyles.mobileNavLink} ${
+                      isActive
+                        ? appShellStyles.mobileNavLinkActive
+                        : appShellStyles.mobileNavLinkInactive
+                    }`
+                  }
+                >
+                  {" "}
+                  <DashboardIcon /> Dashboard
+                </NavLink>
+                <NavLink
+                  onClick={() => setMobileOpen(false)}
+                  to="/app/invoices"
+                  className={({ isActive }) =>
+                    `${appShellStyles.mobileNavLink} ${
+                      isActive
+                        ? appShellStyles.mobileNavLinkActive
+                        : appShellStyles.mobileNavLinkInactive
+                    }`
+                  }
+                >
+                  {" "}
+                  <InvoiceIcon /> Invoices
+                </NavLink>
+                <NavLink
+                  onClick={() => setMobileOpen(false)}
+                  to="/app/create-invoice"
+                  className={({ isActive }) =>
+                    `${appShellStyles.mobileNavLink} ${
+                      isActive
+                        ? appShellStyles.mobileNavLinkActive
+                        : appShellStyles.mobileNavLinkInactive
+                    }`
+                  }
+                >
+                  {" "}
+                  <CreateIcon /> Create Invoice
+                </NavLink>
+                <NavLink
+                  onClick={() => setMobileOpen(false)}
+                  to="/app/business"
+                  className={({ isActive }) =>
+                    `${appShellStyles.mobileNavLink} ${
+                      isActive
+                        ? appShellStyles.mobileNavLinkActive
+                        : appShellStyles.mobileNavLinkInactive
+                    }`
+                  }
+                >
+                  {" "}
+                  <ProfileIcon /> Business Profile
+                </NavLink>
+              </nav>
 
              
                   <svg

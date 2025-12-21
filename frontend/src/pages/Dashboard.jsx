@@ -287,6 +287,48 @@ function formatDate(dateInput) {
                     </svg>
                 
 
+     <div className={dashboardStyles.cardContainer}>
+            <div className="p-6">
+              <h3 className="font-semibold text-gray-900 mb-4">
+                Quick Actions
+              </h3>
+              <div className={dashboardStyles.quickActionsContainer}>
+                <button
+                  onClick={() => navigate("/app/create-invoice")}
+                  className={`${dashboardStyles.quickActionButton} ${dashboardStyles.quickActionBlue}`}
+                >
+                  <div
+                    className={`${dashboardStyles.quickActionIconContainer} ${dashboardStyles.quickActionIconBlue}`}
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M12 5v14m-7-7h14" />
+                    </svg>
+                  </div>
+                  <span className={dashboardStyles.quickActionText}>
+                    Create Invoice
+                  </span>
+                </button>
+
+                <button
+                  onClick={() => navigate("/app/invoices")}
+                  className={`${dashboardStyles.quickActionButton} ${dashboardStyles.quickActionGray}`}
+                >
+                  <div
+                    className={`${dashboardStyles.quickActionIconContainer} ${dashboardStyles.quickActionIconGray}`}
+                  >
+                    <FileTextIcon className="w-4 h-4" />
+                  </div>
+                  <span className={dashboardStyles.quickActionText}>
+                    View All Invoices
+                  </span>
+                </button>
+
                 <button
                   onClick={() => navigate("/app/business")}
                   className={`${dashboardStyles.quickActionButton} ${dashboardStyles.quickActionGray}`}
@@ -309,6 +351,9 @@ function formatDate(dateInput) {
                     Business Profile
                   </span>
                 </button>
+              </div>
+            </div>
+          </div>
            
                   <svg
                     className="w-4 h-4"

@@ -342,7 +342,8 @@ export default function BusinessProfile() {
   }
 
 
-              <svg
+
+      <svg
                 className="w-5 h-5"
                 viewBox="0 0 24 24"
                 fill="none"
@@ -353,6 +354,99 @@ export default function BusinessProfile() {
               </svg>
 
 
+
+
+            {/* Logo Upload */}
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  Company Logo
+                </h3>
+
+                <div className={businessProfileStyles.uploadArea}>
+                  {previews.logo ? (
+                    <div
+                      className={businessProfileStyles.imagePreviewContainer}
+                    >
+                      <div className={businessProfileStyles.logoPreview}>
+                        <img
+                          src={previews.logo}
+                          alt="logo preview"
+                          className="object-contain w-full h-full"
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none";
+                            console.warn(
+                              "[BusinessProfile] logo preview failed to load:",
+                              previews.logo
+                            );
+                          }}
+                        />
+                      </div>
+                      <div className={businessProfileStyles.buttonGroup}>
+                        <label className={businessProfileStyles.changeButton}>
+                          <UploadIcon className="w-4 h-4" />
+                          Change
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) =>
+                              handleLocalFilePick("logo", e.target.files?.[0])
+                            }
+                            className="hidden"
+                          />
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => removeLocalFile("logo")}
+                          className={businessProfileStyles.removeButton}
+                        >
+                          <DeleteIcon className="w-4 h-4" /> Remove
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <label className="cursor-pointer block">
+                      <div
+                        className={`${businessProfileStyles.imagePreviewContainer} ${businessProfileStyles.hoverScale}`}
+                      >
+                        <div
+                          className={businessProfileStyles.uploadIconContainer}
+                        >
+                          <UploadIcon className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <p className={businessProfileStyles.uploadTextTitle}>
+                            Upload Logo
+                          </p>
+                          <p
+                            className={businessProfileStyles.uploadTextSubtitle}
+                          >
+                            PNG, JPG up to 5MB
+                          </p>
+                        </div>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) =>
+                            handleLocalFilePick("logo", e.target.files?.[0])
+                          }
+                          className="hidden"
+                        />
+                      </div>
+                    </label>
+                  )}
+                </div>
+              </div>
+            </div>
+
+
+    
+        {/* Stamp & Signature */}
+        <div className={businessProfileStyles.cardContainer}>
+          <div className={businessProfileStyles.cardHeaderContainer}>
+            <div
+              className={`${businessProfileStyles.cardIconContainer} ${iconColors.assets}`}
+            >
               <svg
                 className="w-5 h-5"
                 viewBox="0 0 24 24"
@@ -364,8 +458,144 @@ export default function BusinessProfile() {
                 <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
                 <path d="M2 2l7.586 7.586" />
               </svg>
-              
-          
+            </div>
+            <h2 className={businessProfileStyles.cardTitle}>Digital Assets</h2>
+          </div>
+
+          <div className={businessProfileStyles.gridCols2Lg}>
+            {/* Stamp */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                Digital Stamp
+              </h3>
+              <div className={businessProfileStyles.uploadArea}>
+                {previews.stamp ? (
+                  <div className={businessProfileStyles.imagePreviewContainer}>
+                    <div className={businessProfileStyles.stampPreview}>
+                      <img
+                        src={previews.stamp}
+                        alt="stamp preview"
+                        className="object-contain w-full h-full"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                          console.warn(
+                            "[BusinessProfile] stamp preview failed to load:",
+                            previews.stamp
+                          );
+                        }}
+                      />
+                    </div>
+                    <div className={businessProfileStyles.buttonGroup}>
+                      <label className={businessProfileStyles.changeButton}>
+                        <UploadIcon className="w-4 h-4" /> Change
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) =>
+                            handleLocalFilePick("stamp", e.target.files?.[0])
+                          }
+                          className="hidden"
+                        />
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => removeLocalFile("stamp")}
+                        className={businessProfileStyles.removeButton}
+                      >
+                        <DeleteIcon className="w-4 h-4" /> Remove
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <label className="cursor-pointer block">
+                    <div
+                      className={`${businessProfileStyles.imagePreviewContainer} ${businessProfileStyles.hoverScale}`}
+                    >
+                      <div
+                        className={
+                          businessProfileStyles.uploadSmallIconContainer
+                        }
+                      >
+                        <ImageIcon className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <p className={businessProfileStyles.uploadTextTitle}>
+                          Upload Stamp
+                        </p>
+                        <p className={businessProfileStyles.uploadTextSubtitle}>
+                          PNG with transparent background
+                        </p>
+                      </div>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) =>
+                          handleLocalFilePick("stamp", e.target.files?.[0])
+                        }
+                        className="hidden"
+                      />
+                    </div>
+                  </label>
+                )}
+              </div>
+            </div>
+
+            {/* Signature */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                Digital Signature
+              </h3>
+              <div className={businessProfileStyles.uploadArea}>
+                {previews.signature ? (
+                  <div className={businessProfileStyles.imagePreviewContainer}>
+                    <div className={businessProfileStyles.signaturePreview}>
+                      <img
+                        src={previews.signature}
+                        alt="signature preview"
+                        className="object-contain w-full h-full"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                          console.warn(
+                            "[BusinessProfile] signature preview failed to load:",
+                            previews.signature
+                          );
+                        }}
+                      />
+                    </div>
+                    <div className={businessProfileStyles.buttonGroup}>
+                      <label className={businessProfileStyles.changeButton}>
+                        <UploadIcon className="w-4 h-4" /> Change
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) =>
+                            handleLocalFilePick(
+                              "signature",
+                              e.target.files?.[0]
+                            )
+                          }
+                          className="hidden"
+                        />
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => removeLocalFile("signature")}
+                        className={businessProfileStyles.removeButton}
+                      >
+                        <DeleteIcon className="w-4 h-4" /> Remove
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <label className="cursor-pointer block">
+                    <div
+                      className={`${businessProfileStyles.imagePreviewContainer} ${businessProfileStyles.hoverScale}`}
+                    >
+                      <div
+                        className={
+                          businessProfileStyles.uploadSmallIconContainer
+                        }
+                      >
                         <svg
                           className="w-5 h-5"
                           viewBox="0 0 24 24"
@@ -376,4 +606,56 @@ export default function BusinessProfile() {
                           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                           <circle cx="12" cy="7" r="4" />
                         </svg>
-                   
+                      </div>
+                      <div>
+                        <p className={businessProfileStyles.uploadTextTitle}>
+                          Upload Signature
+                        </p>
+                        <p className={businessProfileStyles.uploadTextSubtitle}>
+                          PNG with transparent background
+                        </p>
+                      </div>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) =>
+                          handleLocalFilePick("signature", e.target.files?.[0])
+                        }
+                        className="hidden"
+                      />
+                    </div>
+                  </label>
+                )}
+              </div>
+
+              <div className="mt-6 space-y-4">
+                <div>
+                  <label className={businessProfileStyles.label}>
+                    Signature Owner Name
+                  </label>
+                  <input
+                    placeholder="John Doe"
+                    value={meta.signatureOwnerName || ""}
+                    onChange={(e) =>
+                      updateMeta("signatureOwnerName", e.target.value)
+                    }
+                    className={`${businessProfileStyles.input} ${customStyles.inputPlaceholder}`}
+                  />
+                </div>
+                <div>
+                  <label className={businessProfileStyles.label}>
+                    Signature Title / Designation
+                  </label>
+                  <input
+                    placeholder="Director / CEO"
+                    value={meta.signatureOwnerTitle || ""}
+                    onChange={(e) =>
+                      updateMeta("signatureOwnerTitle", e.target.value)
+                    }
+                    className={`${businessProfileStyles.input} ${customStyles.inputPlaceholder}`}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
